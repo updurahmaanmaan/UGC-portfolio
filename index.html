@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="Yalka creates short-form, creator-led videos for AI tools, SaaS brands, and productivity products that need clear, compelling storytelling."
@@ -14,7 +14,718 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+:root {
+  --bg: #f3efe7;
+  --panel: #faf6f1;
+  --panel-strong: #f1eae0;
+  --surface: #f9f5f0;
+  --text: #161b19;
+  --muted: #4d5350;
+  --muted-strong: #2d3432;
+  --accent: #113b34;
+  --accent-soft: #dfeae4;
+  --border: rgba(17, 59, 52, 0.16);
+  --shadow: 0 18px 38px rgba(17, 35, 31, 0.08);
+  --max-width: 1280px;
+  color-scheme: light;
+  --sidebar-width: 260px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(17, 59, 52, 0.35);
+  outline-offset: 3px;
+}
+
+.page-shell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.sidebar {
+  position: sticky;
+  top: 1.5rem;
+  align-self: flex-start;
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: rgba(250, 246, 241, 0.74);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: 1.5rem 1.2rem;
+  height: fit-content;
+  box-shadow: var(--shadow);
+}
+
+.brand-block {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand-mark {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.8rem;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 0;
+}
+
+.nav-link {
+  display: block;
+  color: var(--muted);
+  padding: 0.7rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link.active {
+  background: var(--accent-soft);
+  color: var(--text);
+  transform: translateX(2px);
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(17, 59, 52, 0.04);
+  border: 1px solid var(--border);
+  color: var(--muted-strong);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.availability-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(17, 59, 52, 0.1);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.section {
+  padding: 1.2rem 0 2.5rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  align-items: center;
+  gap: 2.2rem;
+  padding-top: 2.5rem;
+  min-height: 76vh;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.77rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-copy h1,
+.section-header h2,
+.contact-card h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.hero-copy h1 {
+  max-width: 10ch;
+  font-size: clamp(3.3rem, 5vw, 6rem);
+}
+
+.hero-text {
+  max-width: 44rem;
+  margin-top: 1.2rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.2rem;
+  padding: 0.9rem 1.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #f7f1ea;
+  box-shadow: 0 10px 24px rgba(17, 59, 52, 0.15);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--text);
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.portrait-frame {
+  position: relative;
+  width: min(100%, 430px);
+  aspect-ratio: 0.9;
+  border-radius: 32px;
+  background: var(--panel-strong);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.portrait-placeholder,
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eee5da 0%, #dfe8e3 100%);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.video-placeholder {
+  aspect-ratio: 9 / 16;
+  height: auto;
+}
+
+.asset-message,
+.video-message {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  border-radius: 14px;
+  background: rgba(17, 59, 52, 0.9);
+  color: #f2ece5;
+  padding: 0.8rem 0.9rem;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2,
+.contact-card h2 {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+}
+
+.narrow-header {
+  max-width: 38rem;
+}
+
+.projects {
+  padding-top: 3rem;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 12px 26px rgba(20, 25, 23, 0.03);
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.project-number,
+.project-category {
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.project-copy h3 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  line-height: 1.05;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.project-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.project-concept {
+  margin-bottom: 0.8rem !important;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-list li {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.55rem 0.8rem;
+  background: rgba(17, 59, 52, 0.02);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+.video-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin-left: auto;
+  background: #0a1716;
+  border: 1px solid rgba(17, 59, 52, 0.18);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.project-video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: linear-gradient(135deg, rgba(17, 59, 52, 0.1), rgba(17, 59, 52, 0.35));
+}
+
+.project-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 1.5rem 1.25rem;
+  overflow: hidden;
+  border: 0;
+  color: #fffaf4;
+  background: #254c3e;
+  cursor: pointer;
+  text-align: center;
+}
+
+.project-cover[hidden] {
+  display: none;
+}
+
+.project-cover::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 34, 28, 0.72), transparent 38%, rgba(12, 34, 28, 0.08));
+  content: "";
+  pointer-events: none;
+}
+
+.project-cover-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-cover-headline,
+.project-cover-emoji {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 16px rgba(12, 34, 28, 0.3);
+}
+
+.project-cover-headline {
+  max-width: 17ch;
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.project-cover-emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.project-cover-play {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid rgba(255, 250, 244, 0.68);
+  border-radius: 999px;
+  background: rgba(17, 59, 52, 0.86);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.project-cover:focus-visible {
+  outline: 3px solid #fffaf4;
+  outline-offset: -6px;
+}
+
+.section-intro {
+  max-width: 46rem;
+  margin: 0 0 1.75rem;
+  font-size: 1.07rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.service-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.9rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1rem 1rem 1.1rem;
+}
+
+.service-number {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  padding-top: 0.3rem;
+}
+
+.service-item h3 {
+  margin: 0;
+  font-size: 1.14rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.process-step {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 22px;
+  padding: 1.25rem 1.1rem;
+}
+
+.step-label {
+  margin: 0 0 0.9rem;
+  color: var(--accent);
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.process-step p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contact-card {
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(135deg, rgba(17, 59, 52, 0.04), rgba(17, 59, 52, 0.01));
+}
+
+.contact-card p {
+  max-width: 42rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1.06rem;
+}
+
+.contact-card .contact-email {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+
+.contact-card .response-time {
+  margin: 0.85rem 0 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 980px) {
+  .page-shell {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 1rem;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    padding: 1rem 1rem 1.15rem;
+  }
+
+  .brand-block {
+    padding-bottom: 0.7rem;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+
+  .project-layout,
+  .service-list,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-card {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+
+  .page-shell {
+    padding-inline: 0.8rem;
+    padding-bottom: 3rem;
+  }
+
+  .sidebar {
+    border-radius: 20px;
+  }
+
+  .brand-mark {
+    font-size: 2.3rem;
+  }
+
+  .availability {
+    width: fit-content;
+    font-size: 0.68rem;
+  }
+
+  .hero {
+    padding-top: 1.25rem;
+  } 
+
+  .hero-copy h1 {
+    font-size: clamp(2.7rem, 14vw, 4.2rem);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .project-card {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .project-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tag-list {
+    gap: 0.45rem;
+  }
+
+  .service-item {
+    gap: 0.7rem;
+  }
+
+  .contact-card {
+    border-radius: 22px;
+  }
+}
+
+.hero{grid-template-columns:1fr;min-height:auto;padding-top:3rem}.hero-copy h1{max-width:14ch}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);-webkit-text-size-adjust:100%}
+header,section{scroll-margin-top:6rem}
+@media (max-width:980px){
+.page-shell{padding:.6rem .8rem 3rem;gap:.8rem}
+.sidebar{position:sticky;top:calc(.5rem + env(safe-area-inset-top,0px));z-index:20;display:grid;gap:.25rem;padding:.6rem .9rem;border-radius:18px;background:rgba(250,246,241,.94)}
+.brand-block{padding-bottom:.1rem;border-bottom:0}
+.brand-mark{font-size:2rem}
+.sidebar-nav{flex-wrap:nowrap;overflow-x:auto;gap:.3rem;padding:.1rem 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.sidebar-nav::-webkit-scrollbar{display:none}
+.nav-link{flex:0 0 auto;white-space:nowrap;min-height:44px;display:flex;align-items:center;transform:none!important}
+.availability{display:none}
+.video-card{max-width:380px;margin:0 auto}
+}
+@media (max-width:640px){
+.hero-copy h1{font-size:clamp(2.5rem,12.5vw,3.5rem)}
+.hero-text{font-size:1rem;line-height:1.7}
+.section-header h2,.contact-card h2{font-size:clamp(2rem,9vw,2.7rem)}
+.project-copy h3{font-size:1.8rem}
+.project-card{padding:.9rem}
+.button{min-height:48px}
+.contact-card .contact-email{font-size:1.05rem}
+}
+</style>
   </head>
   <body>
     <div class="page-shell">
@@ -49,20 +760,10 @@
 
             <div class="hero-actions">
               <a href="#work" class="button button-primary">Watch My Work</a>
-              <a href="#contact" class="button button-secondary">Let's Work Together</a>
+              <a href="#contact" class="button button-secondary">Let’s Work Together</a>
             </div>
           </div>
-
-          <div class="hero-visual" aria-label="Yalka profile portrait">
-            <div class="portrait-frame">
-              <img
-                class="portrait-image"
-                src="Natural-Light%20Garden%20Portrait.png"
-                alt="Portrait of Yalka, a creator producing short-form videos for AI and SaaS products."
-              />
-            </div>
-          </div>
-        </header>
+</header>
 
         <section id="work" class="section projects">
           <div class="section-header">
@@ -98,9 +799,10 @@
                   controls
                   preload="metadata"
                   playsinline
+                  poster="assets/images/featured-cover.jpg"
                   aria-label="Featured UGC video"
                 >
-                  <source src="featured-ugc-video.mp4" type="video/mp4" />
+                  <source src="assets/videos/featured-ugc-video.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>
@@ -134,21 +836,11 @@
                   controls
                   preload="metadata"
                   playsinline
-                  poster="assets/images/tiimo-video-cover.jpg"
+                  poster="assets/images/tiimo-cover.jpg"
                   aria-label="Tiimo product demo video"
                 >
-                  <source src="WhatsApp%20Video%202026-10-14%20at%2011.37.12.mp4" type="video/mp4" />
+                  <source src="assets/videos/tiimo-video.mp4" type="video/mp4" />
                 </video>
-                <button class="project-cover" type="button" aria-label="Play Tiimo app demo video">
-                  <img
-                    class="project-cover-image"
-                    src="assets/images/tiimo-video-cover.jpg"
-                    alt=""
-                  />
-                  <span class="project-cover-headline">This App helped me organize my life</span>
-                  <span class="project-cover-emoji" aria-hidden="true">😍✨</span>
-                  <span class="project-cover-play" aria-hidden="true">▶ Watch the video</span>
-                </button>
               </div>
             </div>
           </article>
@@ -201,7 +893,7 @@
           <div class="process-grid">
             <article class="process-step">
               <p class="step-label">01. Find the Hook</p>
-              <p>Start with the audience's problem, curiosity, or desired outcome.</p>
+              <p>Start with the audience’s problem, curiosity, or desired outcome.</p>
             </article>
 
             <article class="process-step">
@@ -219,9 +911,9 @@
         <section id="contact" class="section contact-section">
           <div class="contact-card">
             <p class="eyebrow">Contact</p>
-            <h2>Have a useful product? Let's make people care.</h2>
+            <h2>Have a useful product? Let’s make people care.</h2>
             <p>
-              I'm interested in working with AI, SaaS, and app teams on short-form creative concepts. Tell me about your product and what you want the video to achieve.
+              I’m interested in working with AI, SaaS, and app teams on short-form creative concepts. Tell me about your product and what you want the video to achieve.
             </p>
             <p class="contact-email">
               yalkasurplusmedia@gmail.com
@@ -232,6 +924,10 @@
       </main>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+(function(){var s=[].slice.call(document.querySelectorAll("section[id]")),n=[].slice.call(document.querySelectorAll(".nav-link"));
+var o=new IntersectionObserver(function(es){var v=es.filter(function(e){return e.isIntersecting}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio})[0];if(!v)return;
+n.forEach(function(l){l.classList.toggle("active",l.getAttribute("href")==="#"+v.target.id)})},{threshold:[.35,.6,.8],rootMargin:"-10% 0px -45% 0px"});s.forEach(function(x){o.observe(x)})})();
+</script>
   </body>
 </html>
